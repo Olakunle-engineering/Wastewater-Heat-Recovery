@@ -1,10 +1,15 @@
 Engineering Methodology
+
 Thermal Energy Dissipation and Heat-Recovery Potential in Pressurised Sewer Rising Mains
+
 Project: MSc Individual Research Project
+
 Software: MATLAB
+
 Engineering discipline: Mechanical Engineering, Thermal Systems and Sustainable Energy
  
 1. Introduction
+
 This study investigates heat transfer between wastewater flowing through buried pressurised sewer rising mains and the surrounding ground. Wastewater contains thermal energy originating from domestic, commercial and industrial activities. Some of this energy is dissipated during transportation through underground pipe networks.
 The engineering objective is to estimate the extent of this thermal dissipation and investigate the potential for recovering a proportion of the wastewater's thermal energy.
 A one-dimensional, segmented thermal model was developed in MATLAB. The model combines hydraulic measurements, wastewater temperatures, pipe geometry, material properties and assumed ground thermal conditions to estimate wastewater temperature changes along the rising mains.
