@@ -1494,3 +1494,30 @@ function [x_profile, T_profile_winter, T_profile_summer] = calculate_temperature
         T_profile_summer(j+1) = T;
     end
 end
+# Confidential Excel datasets and results
+*.xlsx
+*.xls
+*.xlsm
+
+# Confidential data exports
+*.csv
+
+# MATLAB temporary files
+*.asv
+*.m~
+*.mat
+*.fig
+*.mlx
+
+# MATLAB generated folders
+slprj/
+codegen/
+*.mex*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
