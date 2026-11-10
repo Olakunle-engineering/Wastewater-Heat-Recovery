@@ -1,0 +1,26 @@
+
+# Confidential project data
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+
+# MATLAB temporary and generated files
+*.asv
+*.m~
+*.mat
+*.fig
+*.mlx
+
+# MATLAB generated folders
+slprj/
+codegen/
+*.mex*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
