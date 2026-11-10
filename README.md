@@ -1,4 +1,4 @@
-# Wastewater Rising Main Thermal Model – MATLAB Version 5.1
+# Wastewater Rising Main Thermal Model 
 
 ## 1. Project Overview
 
