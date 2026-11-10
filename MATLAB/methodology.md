@@ -23,7 +23,7 @@ These calculations are related but represent different physical processes.
 
 2. Physical System and Study Configuration
 
-2.1 Pressurised sewer rising mains
+2.1. Pressurised sewer rising mains
 
 A rising main is a pumped wastewater pipeline that generally operates full or under pressure. Unlike a conventional gravity sewer, it does not normally contain a continuous free water surface.
 This distinction is important when assessing hydraulic conditions and selecting the appropriate thermal modelling approach.
@@ -54,7 +54,7 @@ These assumptions provide a computationally manageable representation of the the
 
 3. Data Acquisition and Pre-processing
 
-3.1 Input data
+3.1. Input data
 
 The model imports hydraulic and temperature measurements from a locally selected Excel workbook.
 The workbook contains the following information:
@@ -71,7 +71,7 @@ Temperature measurements
 •	Corresponding seasonal time records.
 The MATLAB script uses the second worksheet for hydraulic measurements and the third worksheet for temperature measurements, with alternative worksheet-name references provided in the import procedure.
 
-3.2 Data alignment and validation
+3.2. Data alignment and validation
 Before performing thermal calculations, the model checks that the hydraulic and temperature records are aligned.
 The following checks are implemented:
 a.	Hydraulic flow, velocity and depth measurements must have matching timestamps.
@@ -81,7 +81,7 @@ d.	At least two valid, strictly increasing time records must be available.
 e.	Records with inconsistent data lengths are rejected rather than silently truncated.
 This procedure reduces the risk of pairing hydraulic measurements with unrelated temperature observations.
 
-3.3 Depth unit conversion
+3.3. Depth unit conversion
 The thermal model requires pipe depth in metres.
 Where the median absolute depth measurement is greater than five times the pipe diameter, the model assumes that the imported depth measurements are in millimetres and converts them into metres:
 [d_{\mathrm{m}}=\frac{d_{\mathrm{mm}}}{1000}]
@@ -91,7 +91,7 @@ This is an automatic unit-detection rule rather than a definitive identification
 4. Hydraulic Screening and Operating Condition Selection
 The thermal model is intended to assess representative near-full, full or surcharged operating conditions. Hydraulic screening is therefore performed before the heat-transfer calculations.
 
-4.1 Depth-to-diameter ratio
+4.1. Depth-to-diameter ratio
 
 The relative depth of wastewater within a pipe is assessed using:
 [
@@ -108,14 +108,14 @@ The model applies a minimum depth-to-diameter ratio of:
 This criterion identifies records where the pipe is operating at or above 90% of its internal diameter.
 Non-positive or non-finite source depths are excluded before calculating the ratio.
 
-4.2 Preissmann slot interpretation
+4.2. Preissmann slot interpretation
 
 The model allows depth-to-diameter ratios greater than 1.0.
 This is used to retain records that may represent surcharged or pressurised conditions above the pipe crown, rather than automatically rejecting them as physically impossible.
 The approach is described as a Preissmann-slot interpretation in the MATLAB script.
 Importantly, the implementation retains the measured ratio above 1.0; it does not construct a separate slot geometry or solve a full pressure-head hydraulic model. Consequently, this treatment should be understood as a simplified representation of surcharge conditions.
 
-4.3 High-flow selection
+4.3. High-flow selection
 A high-flow criterion is applied to focus the thermal analysis on the upper range of qualifying hydraulic operating conditions.
 First, candidate records are identified using the following conditions:
 •	Positive and finite flow rate.
@@ -135,7 +135,7 @@ Q\geq Q_{90}
 are retained for the main thermal analysis.
 This method provides a pipe-specific high-flow threshold rather than applying one common flow-rate limit to all three rising mains.
 
-4.4 Temperature-drop acceptance criteria
+4.4. Temperature-drop acceptance criteria
 
 Following the thermal calculations, the MATLAB model applies additional temperature-drop limits:
 Season	Maximum accepted temperature drop
@@ -147,7 +147,7 @@ The thresholds are modelling choices and should be justified against measurement
 
 5. Thermophysical Properties and Boundary Conditions
 
-5.1 Wastewater properties
+5.1. Wastewater properties
 
 Wastewater is approximated as water using the following constant properties:
 Property	Symbol	Value	Unit
@@ -159,7 +159,7 @@ Prandtl number	(Pr)	7	–
 The approximation simplifies the calculation of fluid velocity effects, internal convection and thermal energy transport.
 Actual wastewater properties may vary with temperature and composition. These variations are not explicitly modelled.
 
-5.2 Seasonal thermal boundary conditions
+5.2. Seasonal thermal boundary conditions
 
 Two seasonal soil temperatures are considered:
 Season	Assumed soil temperature
@@ -168,7 +168,7 @@ Summer	13°C
 The wastewater inlet temperatures are obtained separately from the imported seasonal temperature records.
 The difference between wastewater and surrounding soil temperature provides the driving temperature difference for heat transfer.
 
-5.3 Soil thermal conductivity
+5.3. Soil thermal conductivity
 The baseline soil thermal conductivity is:
 [
 k_s=1.5\ \mathrm{W/(m\cdot K)}
@@ -189,7 +189,7 @@ These values are treated as representative modelling inputs. They are not site-s
 Heat transfer from the moving wastewater to the internal pipe wall is represented using an internal convective heat-transfer coefficient.
 The coefficient is estimated using dimensionless flow parameters.
 
-6.1 Mass flow rate
+6.1. Mass flow rate
 The wastewater mass flow rate is calculated from:
 [
 \dot m=\rho Q
@@ -199,7 +199,8 @@ Where:
 •	(\rho) = wastewater density (kg/m³).
 •	(Q) = volumetric flow rate (m³/s).
 Mass flow rate is important because it determines the thermal capacity of the wastewater passing through the pipeline.
-6.2 Reynolds number
+
+6.2. Reynolds number
 The Reynolds number is calculated using:
 [
 Re=\frac{\rho vD}{\mu}
@@ -210,7 +211,7 @@ Where:
 •	(\mu) = dynamic viscosity (Pa·s).
 The Reynolds number characterises the flow regime and provides the basis for selecting the internal heat-transfer correlation.
 
-6.3 Nusselt number
+6.3. Nusselt number
 The MATLAB model uses a simplified piecewise relationship:
 For:
 [
@@ -232,7 +233,7 @@ The first relationship represents a commonly used approximation for fully develo
 The second relationship is based on the Dittus–Boelter correlation for turbulent internal flow.
 The implementation uses the Reynolds number of 2300 as its switching threshold. This is a simplified treatment of the transition region, and the turbulent correlation should be checked for suitability where Reynolds numbers are close to the transition or below the usual range of applicability of the correlation.
 
-6.4 Internal heat-transfer coefficient
+6.4. Internal heat-transfer coefficient
 The internal convective heat-transfer coefficient is determined from:
 [
 h_i=\frac{Nu,k_w}{D}
@@ -245,7 +246,7 @@ A higher heat-transfer coefficient indicates stronger convective heat transfer b
 
 7. Thermal Resistance Model
 
-7.1 Conceptual approach
+7.1. Conceptual approach
 
 Heat transfer from wastewater to the surrounding ground is represented as three thermal resistances connected in series:
 a.	Internal convection.
@@ -254,8 +255,7 @@ c.	Soil conduction.
 The total thermal resistance is calculated by adding the individual resistances.
 The model uses cylindrical coordinates because the heat transfer occurs radially through a cylindrical pipe wall and the surrounding soil.
 
-7.2 Pipe radii
-
+7.2. Pipe radii
 The internal pipe radius is:
 [
 r_i=\frac{D}{2}
@@ -275,7 +275,7 @@ R'_{\mathrm{conv}}=
 \frac{1}{h_i,2\pi r_i}
 ]
 
-7.4 Pipe-wall conductive resistance
+7.4. Pipe-wall conductive resistance
 The cylindrical pipe-wall resistance per unit length is:
 [
 R'_{\mathrm{pipe}}=
@@ -283,7 +283,7 @@ R'_{\mathrm{pipe}}=
 ]
 Where (k_p) represents the thermal conductivity of the pipe material.
 
-7.5 Soil conductive resistance
+7.5. Soil conductive resistance
 The soil resistance per unit pipe length is:
 [
 R'_{\mathrm{soil}}=
@@ -310,7 +310,7 @@ This formulation allows the radial heat-transfer rate per metre of pipeline to b
 
 8. Axial Temperature Profile and Numerical Solution
 
-8.1 Discretisation of the rising main
+8.1. Discretisation of the rising main
 
 The rising main is divided into a number of smaller axial elements to calculate the temperature change along its length.
 For a pipeline of length (L), divided into (N) equal segments:
@@ -341,7 +341,7 @@ The heat transferred across an individual segment is:
 ]
 Where (\dot Q_j) is the segment heat-transfer rate in watts.
 
-8.3 Wastewater energy balance
+8.3. Wastewater energy balance
 The temperature change across each segment is determined using a steady-flow energy balance:
 [
 \dot Q_j=\dot m c_p\Delta T_j
@@ -393,7 +393,7 @@ This calculation provides an estimate of the thermal power dissipated during was
 The model calculates this quantity separately for winter and summer conditions and compares the results across the three rising mains.
 A distinction is maintained between thermal power, expressed in kW, and thermal energy, expressed in kWh.
 
-9.1 Thermal energy over time
+9.1. Thermal energy over time
 For an interval of constant duration:
 [
 E_{\mathrm{loss}}=
@@ -426,7 +426,7 @@ A sufficiently fine discretisation should produce progressively smaller changes 
 The 200-segment model is retained as the main computational configuration. Its suitability should be supported by the sensitivity results rather than assumed solely from the selected segment count.
 
 11. Theoretical Heat-Extraction Potential
-11.1 Purpose
+11.1. Purpose
 The natural heat-loss model estimates how much thermal energy is dissipated from wastewater into the surrounding ground.
 A separate calculation investigates the theoretical thermal power associated with extracting a specified temperature reduction from the wastewater.
 This is not a detailed simulation of an installed sewer heat exchanger or heat pump.
@@ -445,7 +445,7 @@ Converting into kilowatts:
 \frac{\rho Qc_p\Delta T_{\mathrm{extract}}}{1000}
 ]
 
-11.3 Assumed recovery factor
+11.3. Assumed recovery factor
 The MATLAB model applies an assumed recovery factor of 70%:
 [
 \eta=0.70
@@ -468,7 +468,7 @@ The extraction temperature reductions investigated are:
 •	1.00°C
 •	2.00°C
 
-11.4 Parametric flow-rate analysis
+11.4. Parametric flow-rate analysis
 A parametric investigation is conducted over the following flow-rate range:
 [
 0.02\leq Q\leq0.25\ \mathrm{m^3/s}
@@ -519,14 +519,14 @@ The original input workbook and generated results workbook are kept locally beca
 14. Model Assumptions and Limitations
 The model provides a simplified engineering assessment of thermal behaviour. Its outputs must be interpreted in the context of the assumptions and limitations below.
 
-14.1 Hydraulic and operating assumptions
+14.1. Hydraulic and operating assumptions
 •	The model uses measured flow rate, velocity and depth records.
 •	The near-full/full/surcharged screening threshold is set at (d/D\geq0.90).
 •	The high-flow selection uses the 90th percentile of qualifying flow records.
 •	The simplified Preissmann-slot interpretation does not independently calculate pressure head.
 •	Hydraulic conditions are treated as constant within each modelled time record.
 
-14.2 Thermal assumptions
+14.2. Thermal assumptions
 •	Wastewater is approximated using constant water properties.
 •	Seasonal soil temperatures are fixed at 9°C and 13°C.
 •	The soil is represented using an equivalent radial thermal resistance.
@@ -535,14 +535,14 @@ The model provides a simplified engineering assessment of thermal behaviour. Its
 •	The unidentified pipe material is assigned an assumed thermal conductivity.
 •	The model does not explicitly simulate groundwater movement, soil moisture variation, seasonal ground-temperature profiles or detailed soil layering.
 
-14.3 Numerical assumptions
+14.3. Numerical assumptions
 •	The model uses a one-dimensional axial discretisation.
 •	Radial heat transfer is represented through combined thermal resistances.
 •	Thermal resistance is treated as constant along an individual pipe simulation.
 •	The main model uses 200 axial segments.
 •	The accumulated energy calculation uses a median time interval, which requires verification where measurement intervals are irregular.
 
-14.4 Practical heat-recovery limitations
+14.4. Practical heat-recovery limitations
 The theoretical extraction calculations do not include:
 •	Detailed heat-exchanger geometry and design.
 •	Heat-exchanger fouling or blockage.
