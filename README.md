@@ -1,4 +1,4 @@
-# Wastewater Rising Main Thermal Model 
+# Wastewater Rising Main Thermal Model
 
 ## 1. Project Overview
 
