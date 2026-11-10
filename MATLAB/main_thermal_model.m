@@ -1,3 +1,34 @@
+% =========================================================================
+% PROJECT: Wastewater Rising Main Heat Recovery
+
+% PURPOSE: MATLAB model developed to estimate thermal energy losses and assess potential heat recovery from wastewater rising mains.
+
+% MODEL FEATURES:
+% - Hydraulic and temperature data processing
+% - Pipe geometry and material characterisation
+% - Winter and summer thermal analysis
+% - Convective heat transfer and thermal resistance calculations
+% - Axial wastewater temperature profiling
+% - Flow-rate and soil thermal conductivity sensitivity analysis
+% - Theoretical heat extraction potential assessment
+% - Results visualisation and Excel reporting
+
+% INPUTS: Locally stored Excel workbook containing hydraulic and temperature data.
+
+% OUTPUTS: Thermal performance estimates, sensitivity analyses, figures and
+% summary tables.
+
+% SOFTWARE: MATLAB
+
+% DATA CONFIDENTIALITY: 
+% Original project data and confidential information must not be uploaded
+% to this public repository. Input workbooks and generated reports should
+% remain stored locally unless explicitly approved for sharing.
+%
+% NOTE:
+% Heat recovery values represent model-based estimates and theoretical
+% potential, not experimentally validated system performance.
+% =========================================================================
 clc;
 clear;
 close all;
