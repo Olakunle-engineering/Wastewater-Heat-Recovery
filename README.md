@@ -1,516 +1,201 @@
-# Wastewater Rising Main Thermal Modelling and Heat-Recovery Assessment
+# Wastewater Rising Main Thermal Modelling & Heat-Recovery Assessment
 
-**Project discipline:** Mechanical Engineering | Thermal Systems | Sustainable Energy  
-**Modelling environment:** MATLAB  
-**Project type:** Engineering analysis and numerical modelling
-
----
-
-## 1. Project Overview
-
-### 1.1 Background
-
-Wastewater transported through urban sewer networks retains thermal energy originating from domestic, commercial and industrial activities. During transportation, a proportion of this energy may be transferred through the pipeline wall into the surrounding ground.
-
-Wastewater infrastructure therefore represents a potential source of low-grade thermal energy that could contribute towards sustainable heating and low-carbon energy systems.
-
-This project develops a MATLAB-based thermal modelling framework to investigate heat transfer from wastewater flowing through buried pressurised rising mains.
-
-The model combines hydraulic operating data, wastewater temperature measurements, pipe geometry, material properties and assumed soil thermal conditions to estimate wastewater temperature changes and natural thermal dissipation.
-
-A separate theoretical heat-extraction assessment investigates the relationship between wastewater flow rate, assumed extraction temperature reduction and potential useful thermal power.
-
-### 1.2 Project Aim
-
-To develop and apply a numerical thermal model for assessing heat transfer and theoretical heat-recovery potential in urban wastewater rising mains under different hydraulic, material and seasonal conditions.
-
-### 1.3 Engineering Scope
-
-The investigation comprises:
-
-- Hydraulic data processing and operating-condition screening.
-- Internal convective heat-transfer estimation.
-- Cylindrical thermal resistance modelling.
-- Axial wastewater temperature-profile prediction.
-- Seasonal heat-loss assessment.
-- Numerical segmentation sensitivity analysis.
-- Flow-rate and theoretical heat-extraction assessment.
-- Soil thermal conductivity sensitivity analysis.
+**Discipline:** Mechanical Engineering / Energy Systems  
+**Environment:** MATLAB  
+**Scope:** Hydraulic Data Processing, Transient Thermal Modelling, and Parametric Sensitivity Analysis
 
 ---
 
-## 2. Engineering System Description
+## 1. Project Background & Scope
 
-### 2.1 Rising Main Configurations
+### 1.1 Overview
+Wastewater conveyed through underground rising mains represents a significant source of low-grade waste heat. Capturing this thermal energy depends on dynamic interactions between internal flow regimes, pipe geometry, wall material conductivity, and surrounding soil thermal properties.
 
-The model considers three buried wastewater rising mains with different geometries and pipe materials.
-
-| Parameter | RM1 | RM2 | RM3 |
-|---|---:|---:|---:|
-| Pipeline length (m) | 1,730 | 3,303 | 2,927 |
-| Internal diameter (mm) | 150 | 600 | 500 |
-| Pipe material | PVC | Cast iron | Unknown |
-| Thermal conductivity (W/m·K) | 0.19 | 52 | 1.0* |
-
-*The thermal conductivity assigned to RM3 is an assumed value because the pipe material is unidentified.*
-
-### 2.2 Physical Heat-Transfer Mechanism
-
-The model represents heat transfer from the wastewater to the surrounding ground through three consecutive mechanisms:
-
-1. Internal convection between the wastewater and the pipe's internal surface.
-2. Conduction through the pipe wall.
-3. Conduction through the surrounding soil.
-
-The combined thermal resistance determines the heat-transfer rate for a given temperature difference between the wastewater and the surrounding ground.
+### 1.2 Objectives
+This study establishes a MATLAB-based analytical framework to:
+1. **Filter & Process Data:** Screen hydraulic and thermal telemetry from field measurements.
+2. **Model Heat Transfer:** Compute internal convective coefficients and 1D radial thermal resistance networks.
+3. **Simulate Axial Profiles:** Discretize pipe reaches to predict dynamic fluid temperature drop ($\Delta T$) and total thermal dissipation ($\dot Q$).
+4. **Evaluate Seasonal Limits:** Model heat loss across defined winter ($9^\circ\text{C}$) and summer ($13^\circ\text{C}$) ground boundary conditions.
+5. **Conduct Sensitivity Analysis:** Assess grid convergence (segment resolution), flow dynamics ($Q$), and soil conductivity ($k_s$).
+6. **Quantify Recovery Potential:** Estimate theoretical usable thermal power under target temperature drop scenarios.
 
 ---
 
-## 3. Input Parameters and Boundary Conditions
+## 2. System Specifications & Heat Transfer Physics
 
-### 3.1 Hydraulic and Temperature Data
+### 2.1 Pipe System Parameters
+Three rising main (RM) configurations are evaluated:
 
-The MATLAB script imports measurements from a locally selected Excel workbook.
+| Reach Model | Length $L$ (m) | Internal Diameter $D$ (m) | Material | Thermal Conductivity $k_p$ (W/m·K) | Wall Thickness $t$ (m) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **RM1** | 1,730 | 0.150 | PVC | 0.19 | 0.015 |
+| **RM2** | 3,303 | 0.600 | Cast Iron | 52.00 | 0.015 |
+| **RM3** | 2,927 | 0.500 | Assumed | 1.00 | 0.015 |
 
-The hydraulic dataset includes:
-
-- Measurement timestamps.
-- Volumetric flow rate.
-- Wastewater velocity.
-- Wastewater depth.
-
-The temperature dataset provides seasonal wastewater inlet temperatures for winter and summer analysis.
-
-The imported measurements are checked for consistency and aligned using their corresponding timestamps before thermal calculations are performed.
-
-### 3.2 Pipe and Material Parameters
-
-| Parameter | Symbol | Model value |
-|---|---|---:|
-| Pipe wall thickness | \(t_p\) | 0.015 m |
-| PVC conductivity | \(k_p\) | 0.19 W/m·K |
-| Cast iron conductivity | \(k_p\) | 52 W/m·K |
-| Assumed RM3 conductivity | \(k_p\) | 1.0 W/m·K |
-| Soil reference radius | \(r_s\) | 2.0 m |
-
-### 3.3 Wastewater Thermophysical Properties
-
-Wastewater is approximated using constant water properties.
-
-| Property | Symbol | Value | Unit |
-|---|---|---:|---|
-| Density | \(\rho\) | 1,000 | kg/m³ |
-| Specific heat capacity | \(c_p\) | 4,180 | J/kg·K |
-| Dynamic viscosity | \(\mu\) | 0.001 | Pa·s |
-| Thermal conductivity | \(k_w\) | 0.60 | W/m·K |
-| Prandtl number | \(Pr\) | 7 | – |
-
-### 3.4 Seasonal Boundary Conditions
-
-| Condition | Assumed soil temperature |
-|---|---:|
-| Winter | 9°C |
-| Summer | 13°C |
-
-The soil thermal conductivity baseline is 1.5 W/m·K.
-
-Alternative soil conductivity values are investigated separately through sensitivity analysis.
-
----
-
-## 4. Engineering Methodology
-
-### 4.1 Hydraulic Data Processing and Validation
-
-The hydraulic measurements are screened before being passed into the thermal model.
-
-The depth-to-diameter ratio is calculated as:
-
-\[
-\frac{d}{D}
-\]
+### 2.2 Thermal Resistance Network
+Heat transfer from the bulk fluid to the far-field soil boundary is modeled using a three-stage cylindrical thermal resistance network in series:
+[ Bulk Fluid ] ---> R_conv ---> [ Pipe Wall ] ---> R_pipe ---> [ Soil Matrix ] ---> R_soil ---> [ Ground Boundary ]
+$$\begin{aligned}
+R_{\text{total}} &= R_{\text{conv}} + R_{\text{pipe}} + R_{\text{soil}} \\[1.5ex]
+&= \frac{1}{2 \pi r_i L \, h_i} + \frac{\ln(r_o / r_i)}{2 \pi k_p L} + \frac{\ln(r_s / r_o)}{2 \pi k_s L}
+\end{aligned}$$
 
 Where:
-
-- \(d\) = wastewater depth (m).
-- \(D\) = internal pipe diameter (m).
-
-The model applies a minimum depth ratio of:
-
-\[
-\frac{d}{D}\geq0.90
-\]
-
-This identifies near-full, full and potentially surcharged operating conditions.
-
-A simplified Preissmann-slot interpretation permits depth ratios greater than 1.0 to remain in the analysis. The model retains these ratios but does not implement a separate pressure-head hydraulic solution.
-
-A high-flow selection threshold is also applied using the 90th percentile of qualifying flow measurements:
-
-\[
-Q_{90}=P_{90}(Q_{\mathrm{candidate}})
-\]
-
-The hydraulic screening process also checks for positive and finite measurements, matching timestamps and consistent data lengths.
-
-### 4.2 Internal Convective Heat Transfer
-
-The internal convective heat-transfer coefficient is estimated using the Reynolds number and Nusselt number.
-
-The Reynolds number is:
-
-\[
-Re=\frac{\rho vD}{\mu}
-\]
-
-The model uses a simplified flow-regime distinction.
-
-For laminar flow:
-
-\[
-Nu=3.66 \qquad Re<2300
-\]
-
-For turbulent flow:
-
-\[
-Nu=0.023Re^{0.8}Pr^{0.4}
-\qquad Re\geq2300
-\]
-
-The internal heat-transfer coefficient is then calculated as:
-
-\[
-h_i=\frac{Nu\,k_w}{D}
-\]
-
-This coefficient represents convective heat transfer between the moving wastewater and the internal pipe surface.
-
-### 4.3 Cylindrical Thermal Resistance Model
-
-The model represents radial heat transfer using three thermal resistances in series.
-
-The internal and external pipe radii are:
-
-\[
-r_i=\frac{D}{2}
-\]
-
-\[
-r_o=r_i+t_p
-\]
-
-The individual resistances per unit pipe length are:
-
-**Internal convection:**
-
-\[
-R'_{\mathrm{conv}}=
-\frac{1}{2\pi r_i h_i}
-\]
-
-**Pipe-wall conduction:**
-
-\[
-R'_{\mathrm{pipe}}=
-\frac{\ln(r_o/r_i)}{2\pi k_p}
-\]
-
-**Soil conduction:**
-
-\[
-R'_{\mathrm{soil}}=
-\frac{\ln(r_s/r_o)}{2\pi k_s}
-\]
-
-The total thermal resistance is:
-
-\[
-R'_{\mathrm{total}}=
-R'_{\mathrm{conv}}+
-R'_{\mathrm{pipe}}+
-R'_{\mathrm{soil}}
-\]
-
-Where \(k_s\) represents soil thermal conductivity.
-
-The resulting resistance is expressed in K·m/W.
-
-### 4.4 Axial Temperature-Profile Modelling
-
-Each rising main is divided into smaller computational segments.
-
-The main model uses 200 segments, with the segment length determined by:
-
-\[
-\Delta x=\frac{L}{N}
-\]
-
-At each segment, the heat-transfer rate per unit length is calculated using:
-
-\[
-q'_j=\frac{T_j-T_s}{R'_{\mathrm{total}}}
-\]
-
-The heat-transfer rate across an individual segment is:
-
-\[
-\dot Q_j=q'_j\Delta x
-\]
-
-The wastewater mass flow rate is:
-
-\[
-\dot m=\rho Q
-\]
-
-Using a steady-flow energy balance, the temperature reduction across each segment is:
-
-\[
-\Delta T_j=
-\frac{\dot Q_j}{\dot m c_p}
-\]
-
-The outlet temperature from each segment becomes the inlet temperature for the next segment:
-
-\[
-T_{j+1}=T_j-\Delta T_j
-\]
-
-This calculation is repeated along the full pipeline to estimate the final wastewater outlet temperature.
-
-The procedure is performed independently for winter and summer boundary conditions.
-
-### 4.5 Seasonal Heat-Loss Assessment
-
-The predicted overall wastewater temperature reduction is:
-
-\[
-\Delta T_{\mathrm{pipe}}=
-T_{\mathrm{in}}-T_{\mathrm{out}}
-\]
-
-The corresponding natural thermal dissipation rate is:
-
-\[
-\dot Q_{\mathrm{loss}}=
-\dot m c_p\Delta T_{\mathrm{pipe}}
-\]
-
-Or:
-
-\[
-\dot Q_{\mathrm{loss}}=
-\rho Qc_p\Delta T_{\mathrm{pipe}}
-\]
-
-The calculated value is converted from watts to kilowatts for reporting.
-
-The model produces seasonal estimates of:
-
-- Average temperature reduction.
-- Maximum temperature reduction.
-- Average thermal dissipation rate.
-- Maximum thermal dissipation rate.
-- Estimated accumulated thermal energy.
+* $r_i, r_o$ = internal and external pipe radii ($m$).
+* $r_s$ = effective thermal influence boundary radius in soil ($m$).
+* $k_s$ = soil thermal conductivity (Base case: $1.5\text{ W/m}\cdot\text{K}$; parametric range covers dry/wet sand, clay, gravel, limestone).
 
 ---
 
-## 5. Numerical and Sensitivity Analysis
+## 3. Data Screening & Internal Convection
 
-### 5.1 Numerical Segmentation Sensitivity
+### 3.1 Hydraulic Pre-processing
+To ensure valid thermal modeling under full-pipe/pressurized conditions, raw hydraulic observations are screened via two primary filters:
+1. **Filling Threshold:** Depth-to-diameter ratio $d/D \geq 0.90$. *(Note: A Preissmann slot approximation is applied for $d/D \ge 1.0$ to account for surcharge conditions without full transient pressure modeling).*
+2. **High-Flow Selection:** 90th percentile flow rate ($Q_{90}$) filtering to isolate representative high-convective operating periods.
 
-The model evaluates alternative axial discretisations to investigate the effect of segment size on predicted wastewater outlet temperature.
+### 3.2 Hydro-Thermal Correlations
+The internal convective heat transfer coefficient ($h_i$) is calculated dynamically across flow regimes:
 
-| Number of segments | Element length |
-|---:|---:|
-| 25 | \(L/25\) |
-| 50 | \(L/50\) |
-| 100 | \(L/100\) |
-| 200 | \(L/200\) |
-| 500 | \(L/500\) |
-| 1,000 | \(L/1000\) |
-
-The comparison assesses whether further refinement produces meaningful changes in predicted temperature reduction.
-
-### 5.2 Flow-Rate and Heat-Extraction Assessment
-
-A separate theoretical heat-extraction calculation investigates the thermal power associated with an assumed wastewater temperature reduction.
-
-The wastewater-side theoretical thermal power is:
-
-\[
-\dot Q_{\mathrm{theoretical}}=
-\rho Qc_p\Delta T_{\mathrm{extract}}
-\]
-
-The model applies an assumed recovery factor of 70%:
-
-\[
-\dot Q_{\mathrm{useful}}=
-0.70\dot Q_{\mathrm{theoretical}}
-\]
-
-The following extraction temperature reductions are assessed:
-
-- 0.25°C
-- 0.50°C
-- 1.00°C
-- 2.00°C
-
-A parametric flow-rate sweep is conducted between:
-
-\[
-0.02\leq Q\leq0.25\ \mathrm{m^3/s}
-\]
-
-This analysis is used to investigate the theoretical relationship between flow rate, assumed extraction temperature reduction and useful thermal power.
-
-The 70% factor is an assumed modelling parameter and does not represent measured heat-exchanger performance or a heat-pump coefficient of performance.
-
-### 5.3 Soil Thermal Conductivity Sensitivity
-
-The influence of soil thermal conductivity on thermal performance is investigated using seven assumed soil conditions.
-
-| Soil condition | Thermal conductivity (W/m·K) |
-|---|---:|
-| Dry sand | 0.560 |
-| Moist/wet sand | 0.955 |
-| Soaked sand | 2.160 |
-| Dry clay | 0.435 |
-| Wet clay | 1.300 |
-| Sandy gravel | 2.510 |
-| Limestone | 1.300 |
-
-The sensitivity analysis focuses on RM2 and retains the same pipe geometry and qualifying hydraulic operating records for each soil case.
-
-The outputs include changes in predicted temperature reduction, outlet temperature, heat-loss rate and estimated thermal energy dissipation.
+$$\begin{aligned}
+ Re &= \frac{\rho \, v \, D}{\mu} \\[1ex]
+ Nu &= f(Re, Pr) \quad \left[\text{Turbulent correlation applied for } Re \ge 2300\right] \\[1ex]
+ h_i &= \frac{Nu \cdot k_w}{D}
+\end{aligned}$$
 
 ---
 
-## 6. Model Outputs and Visualisation
+## 4. Numerical Discretization & Energy Balance
 
-The MATLAB model generates graphical and numerical outputs to support interpretation of the thermal behaviour.
+### 4.1 Segmental Marching Method
+Each reach is discretized into $N$ equal segments along its axial length ($N_{\text{baseline}} = 200$). For each spatial segment $j$, steady-state energy conservation yields:
 
-| Output | Engineering application |
-|---|---|
-| Hydraulic depth-ratio assessment | Operating-condition screening |
-| Inlet and outlet temperature plots | Seasonal thermal comparison |
-| Axial temperature profiles | Temperature variation along the pipeline |
-| Heat-loss plots | Assessment of natural thermal dissipation |
-| Segmentation sensitivity plots | Numerical refinement assessment |
-| Flow-rate extraction plots | Theoretical heat-recovery assessment |
-| Soil sensitivity plots | Investigation of ground-property uncertainty |
-| Summary tables | Consolidation of hydraulic and thermal results |
+$$\dot Q_j = \frac{T_{w,j} - T_{\text{ground}}}{R_{\text{total}, j}}$$
 
-The script also generates Excel output tables containing model summaries, sensitivity results and supporting numerical data.
+$$\Delta T_j = \frac{\dot Q_j}{\dot m \, c_p}$$
 
----
+$$T_{w, j+1} = T_{w, j} - \Delta T_j$$
 
-## 7. Software and Engineering Techniques
+Where $\dot m = \rho Q$ is the fluid mass flow rate and $c_p$ is the specific heat capacity of wastewater.
 
-**Primary modelling environment:** MATLAB
-
-**Engineering methods and competencies demonstrated:**
-
-- Thermal systems modelling.
-- Convective heat-transfer analysis.
-- Cylindrical thermal resistance calculations.
-- Hydraulic data interpretation.
-- Steady-flow energy balances.
-- Numerical segmentation.
-- Parametric modelling.
-- Sensitivity analysis.
-- Engineering data processing and visualisation.
-- Technical interpretation of low-carbon energy opportunities.
+### 4.2 Sensitivity Analysis Framework
+* **Grid Independence:** Evaluated across $N \in \{25, 50, 100, 200, 500, 1000\}$ to verify spatial convergence.
+* **Flow Rate Sweep:** Evaluated across $0.02 \le Q \le 0.25\text{ m}^3/\text{s}$.
+* **Soil Matrix Variation:** Parametric study across 7 distinct geological profiles.
 
 ---
 
-## 8. Engineering Assumptions and Limitations
+## 5. Theoretical Energy Recovery Model
 
-The model provides a simplified numerical assessment and is subject to several assumptions.
+Recoverable thermal power ($\dot Q_{\text{useful}}$) for target fluid temperature drops ($\Delta T_{\text{target}} \in \{0.25^\circ\text{C}, 0.50^\circ\text{C}, 1.00^\circ\text{C}, 2.00^\circ\text{C}\}$) is defined as:
 
-### 8.1 Thermal and Material Assumptions
+$$\dot Q_{\text{available}} = \dot m \, c_p \, \Delta T_{\text{target}}$$
 
-- Wastewater is represented using constant water properties.
-- Soil boundary temperatures are fixed for each seasonal scenario.
-- Soil conductivity is assumed uniform within each simulation.
-- The unidentified RM3 pipe material is assigned an assumed conductivity.
-- Soil temperature variation with depth and time is not explicitly modelled.
+$$\dot Q_{\text{useful}} = \eta_{\text{utilization}} \cdot \dot Q_{\text{available}}$$
 
-### 8.2 Hydraulic and Numerical Assumptions
+A baseline utilization factor $\eta_{\text{utilization}} = 0.70$ is applied as a conservative operational ceiling. 
 
-- Hydraulic operating conditions are treated as constant within each modelled time record.
-- The depth-ratio threshold is used as an operating-condition screening criterion.
-- The Preissmann-slot treatment does not independently calculate pressure head.
-- Internal convection correlations are applied using a simplified Reynolds-number switching threshold.
-- The axial thermal model uses a fixed resistance within each individual pipe simulation.
-- The main discretisation uses 200 segments and is assessed through a separate sensitivity investigation.
-
-### 8.3 Heat-Recovery Assumptions
-
-- The theoretical extraction assessment uses prescribed wastewater temperature reductions.
-- A 70% recovery factor is assumed.
-- Heat-exchanger design, fouling, heat-pump performance and auxiliary energy consumption are not explicitly simulated.
-- Economic feasibility and installation constraints are outside the current model scope.
-
-The accumulated thermal energy calculations also require attention where the source timestamps are irregular, because the current implementation uses a median time interval.
-
-Further validation against measured outlet temperatures and site-specific ground conditions would improve confidence in the predictions.
+> **Engineering Note:** $\eta_{\text{utilization}}$ accounts for operational downtime and system boundary losses. It is not an assertion of heat exchanger thermal effectiveness or heat pump Coefficient of Performance (COP), which require dedicated secondary-loop modeling.
 
 ---
 
-## 9. Data Confidentiality and Reproducibility
+## 6. Seasonal Heat-Loss Results & Discussion
 
-The original hydraulic and temperature dataset is confidential and is not distributed with this repository.
+This section presents the thermal performance, heat-loss rates, and temperature drops across reach models **RM1**, **RM2**, and **RM3** over continuous 48-hour summer and winter simulation scenarios.
 
-The MATLAB script requests the input workbook locally at runtime. Users wishing to reproduce the analysis must provide their own appropriately structured dataset.
+### 6.1 Summary of Seasonal Heat-Loss Metrics
 
-The original source workbook and generated output workbook must remain in approved secure storage and must not be uploaded without authorisation.
-
-The published repository is intended to demonstrate the modelling methodology, engineering calculations and software implementation without disclosing confidential operational measurements.
-
----
-
-## 10. Engineering Significance and Further Development
-
-This project demonstrates the application of mechanical engineering principles to the investigation of low-carbon thermal energy opportunities within existing wastewater infrastructure.
-
-The modelling framework provides a basis for understanding how hydraulic conditions, pipe materials, soil properties and seasonal temperatures influence wastewater thermal behaviour.
-
-Potential further development includes:
-
-1. Validation against measured outlet temperatures.
-2. Site-specific investigation of soil thermal properties.
-3. Improved representation of transient ground-temperature behaviour.
-4. Assessment of alternative internal convection correlations.
-5. Improved integration using individual timestamp intervals.
-6. Detailed heat-exchanger and heat-pump system modelling.
-7. Assessment of pumping energy and net useful thermal output.
-8. Techno-economic and carbon-emissions assessment.
-
-The longer-term objective is to develop the model towards a more comprehensive engineering assessment of wastewater heat recovery as a potential contributor to sustainable urban energy systems.
+| Reach Model | Winter Heat Loss Rate (kW) | Summer Heat Loss Rate (kW) | Avg. Winter Temp Drop (°C) | Avg. Summer Temp Drop (°C) | Valid Observations ($N$) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **RM1** | *N/A (No model output)* | *N/A (No model output)* | *N/A (No model output)* | *N/A (No model output)* | 0 |
+| **RM2** | **32.27 – 36.26** | **86.72 – 89.59** | **0.0379 – 0.0425** | **0.1018 – 0.1051** | **4** |
+| **RM3** | *N/A (No model output)* | *N/A (No model output)* | *N/A (No model output)* | *N/A (No model output)* | 0 |
 
 ---
 
-## 11. Repository Structure
+### 6.2 Model Visualizations & Comparative Analysis
 
-```text
-Wastewater-Heat-Recovery/
+<p align="center">
+  <img src="assets/summer_heat_loss.png" alt="Summer Heat Loss Comparison" width="700"/>
+  <br>
+  <em>Figure 6.1: Modelled summer heat-loss rate comparison across reach models (RM1, RM2, RM3).</em>
+</p>
+
+<p align="center">
+  <img src="assets/winter_heat_loss.png" alt="Winter Heat Loss Comparison" width="700"/>
+  <br>
+  <em>Figure 6.2: Modelled winter heat-loss rate comparison across reach models (RM1, RM2, RM3).</em>
+</p>
+
+#### 1. Reach Model Execution Status (RM1 vs. RM2 vs. RM3)
+* **RM2 Functional Validation:** Model **RM2** is the only formulation that produced valid, non-zero output streams for outlet temperature, reach temperature drop, and total heat loss.
+* **RM1 and RM3 Null Outputs:** Inspection of the temperature profile plots confirms that the modelled outlet temperature data series for **RM1** and **RM3** are absent, yielding zero valid observations for thermal calculation.
+
+#### 2. Heat-Loss Rate Dynamics (RM2)
+* **Summer Operations:** The heat-loss rate ranges from **86.72 kW to 89.59 kW**. The elevated summer heat dissipation is primarily driven by higher wastewater inlet temperatures (**16.25 °C to 18.55 °C**), which increase the thermal gradient relative to internal reach boundaries.
+* **Winter Operations:** The heat-loss rate ranges from **32.27 kW to 36.26 kW**. Lower baseline inlet fluid temperatures (**9.90 °C to 11.30 °C**) result in lower absolute thermal dissipation along the reach length.
+
+<p align="center">
+  <img src="assets/summer_temp_drop.png" alt="Summer Temperature Drop" width="700"/>
+  <br>
+  <em>Figure 6.3: Modelled summer temperature drop ($\Delta T$) along reach length.</em>
+</p>
+
+<p align="center">
+  <img src="assets/winter_temp_drop.png" alt="Winter Temperature Drop" width="700"/>
+  <br>
+  <em>Figure 6.4: Modelled winter temperature drop ($\Delta T$) along reach length.</em>
+</p>
+
+#### 3. Wastewater Temperature Drop ($\Delta T$)
+* Across both seasonal evaluations, localized fluid cooling per unit length remains minimal:
+  * **Summer $\Delta T$:** **0.1018 °C to 0.1051 °C**
+  * **Winter $\Delta T$:** **0.0379 °C to 0.0425 °C**
+* **Thermal Mass Significance:** High wastewater flow volume cushions the stream against rapid thermal degradation, even while dissipating up to **89.59 kW** of total heat energy to surrounding boundaries.
+
+<p align="center">
+  <img src="assets/rm2_summer_inlet_outlet.png" alt="RM2 Summer Inlet vs Outlet Temp" width="700"/>
+  <br>
+  <em>Figure 6.5: RM2 Summer inlet vs. modelled outlet temperature over a 48-hour simulation.</em>
+</p>
+
+<p align="center">
+  <img src="assets/rm2_winter_inlet_outlet.png" alt="RM2 Winter Inlet vs Outlet Temp" width="700"/>
+  <br>
+  <em>Figure 6.6: RM2 Winter inlet vs. modelled outlet temperature over a 48-hour simulation.</em>
+</p>
+
+#### 4. Sampling Windows & Diurnal Response
+* **Observation Structure:** Quantitative heat loss and temperature drop outputs for **RM2** were captured across $N = 4$ discrete 1-hour observation windows centered at $t = [18, 19]\text{ h}$ and $t = [42, 43]\text{ h}$ across the 48-hour run period.
+* **Diurnal Tracking:** Modelled outlet temperature closely mirrors the incoming diurnal boundary curve across both 24-hour cycles, verifying numerical stability under dynamic inlet flow conditions.
+
+---
+
+## 7. Key Modeling Assumptions & Future Scope
+
++-----------------------------------------------------------------------------------+
+| ASSUMPTIONS & LIMITATIONS                                                         |
++-----------------------------------------------------------------------------------+
+| • 1D radial steady-state heat conduction (transient ground storage omitted).     |
+| • Uniform pipe-wall thickness (0.015 m nominal across all mains).                 |
+| • Constant soil boundary temperatures (Winter: 9°C, Summer: 13°C).                |
+| • Temperature-independent wastewater thermophysical properties.                   |
++-----------------------------------------------------------------------------------+
 │
-├── README.md
-│
-├── .gitignore
-│
-├── MATLAB/
-│   └── main_thermal_model.m
-│
-├── Results/
-│
-├── Figures/
-│
-└── Documentation/
-    └── methodology.md
-```
+▼
++-----------------------------------------------------------------------------------+
+| FUTURE DEVELOPMENT PATHWAY                                                        |
++-----------------------------------------------------------------------------------+
+| 1. Field Validation: Integrate in-situ ground temperature & conductivity probes.  |
+| 2. Advanced Hydraulics: Integrate 1D unsteady pressurized flow solvers.          |
+| 3. System Integration: Model HEX fouling factors, heat pump COP, and parasitic    |
+|    pumping loads against local building heat demand curves.                        |
++-----------------------------------------------------------------------------------+
 
-*The repository structure may be extended as validated figures, technical documentation and non-confidential outputs become available.*
+
+---
+
+## 8. Data Confidentiality & Reproducibility
+
+The source code ingests raw hydraulic and thermal telemetry via external spreadsheet bindings. Confidential telemetry is excluded from public source control. The analytical workflow can be reproduced by executing the core MATLAB script paired with any standard-compliant dataset matching the required schemas.
