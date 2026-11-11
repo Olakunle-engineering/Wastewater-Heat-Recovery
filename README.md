@@ -174,24 +174,22 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 
 ## 7. Key Modeling Assumptions & Future Scope
 
-+-----------------------------------------------------------------------------------+
-| ASSUMPTIONS & LIMITATIONS                                                         |
-+-----------------------------------------------------------------------------------+
+
+| ASSUMPTIONS & LIMITATIONS                                                        |
+|:--------------------------------------------------------------------------------:|
 | • 1D radial steady-state heat conduction (transient ground storage omitted).     |
 | • Uniform pipe-wall thickness (0.015 m nominal across all mains).                 |
 | • Constant soil boundary temperatures (Winter: 9°C, Summer: 13°C).                |
 | • Temperature-independent wastewater thermophysical properties.                   |
-+-----------------------------------------------------------------------------------+
-│
-▼
-+-----------------------------------------------------------------------------------+
+
+
 | FUTURE DEVELOPMENT PATHWAY                                                        |
-+-----------------------------------------------------------------------------------+
+|:---------------------------------------------------------------------------------:|
 | 1. Field Validation: Integrate in-situ ground temperature & conductivity probes.  |
 | 2. Advanced Hydraulics: Integrate 1D unsteady pressurized flow solvers.          |
 | 3. System Integration: Model HEX fouling factors, heat pump COP, and parasitic    |
 |    pumping loads against local building heat demand curves.                        |
-+-----------------------------------------------------------------------------------+
+
 
 
 ---
