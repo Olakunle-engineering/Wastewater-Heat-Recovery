@@ -137,13 +137,13 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 * **Winter Operations:** The heat-loss rate ranges from **32.27 kW to 36.26 kW**. Lower baseline inlet fluid temperatures (**9.90 °C to 11.30 °C**) result in lower absolute thermal dissipation along the reach length.
 
 <p align="center">
-  <img src="assets/summer_temp_drop.png" alt="Summer Temperature Drop" width="700"/>
+  <img src="assets/Screenshot 2026-11-11 at 13.10.40.png" alt="Summer Temperature Drop" width="700"/>
   <br>
   <em>Figure 6.3: Modelled summer temperature drop ($\Delta T$) along reach length.</em>
 </p>
 
 <p align="center">
-  <img src="assets/winter_temp_drop.png" alt="Winter Temperature Drop" width="700"/>
+  <img src="assets/Screenshot 2026-11-11 at 13.11.10.png" alt="Winter Temperature Drop" width="700"/>
   <br>
   <em>Figure 6.4: Modelled winter temperature drop ($\Delta T$) along reach length.</em>
 </p>
@@ -155,13 +155,13 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 * **Thermal Mass Significance:** High wastewater flow volume cushions the stream against rapid thermal degradation, even while dissipating up to **89.59 kW** of total heat energy to surrounding boundaries.
 
 <p align="center">
-  <img src="assets/rm2_summer_inlet_outlet.png" alt="RM2 Summer Inlet vs Outlet Temp" width="700"/>
+  <img src="assets/Screenshot 2026-11-11 at 13.22.58.png" alt="RM2 Summer Inlet vs Outlet Temp" width="700"/>
   <br>
   <em>Figure 6.5: RM2 Summer inlet vs. modelled outlet temperature over a 48-hour simulation.</em>
 </p>
 
 <p align="center">
-  <img src="assets/rm2_winter_inlet_outlet.png" alt="RM2 Winter Inlet vs Outlet Temp" width="700"/>
+  <img src="assets/Screenshot 2026-11-11 at 13.22.44.png" alt="RM2 Winter Inlet vs Outlet Temp" width="700"/>
   <br>
   <em>Figure 6.6: RM2 Winter inlet vs. modelled outlet temperature over a 48-hour simulation.</em>
 </p>
