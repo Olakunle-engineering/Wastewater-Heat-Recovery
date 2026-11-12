@@ -51,7 +51,7 @@ Where:
 
 ###  Hydraulic Pre-processing
 To ensure valid thermal modeling under full-pipe/pressurized conditions, raw hydraulic observations are screened via two primary filters:
-1. **Filling Threshold:** Depth-to-diameter ratio $d/D \geq 0.90$. *(Note: A Preissmann slot approximation is applied for $d/D \ge 1.0$ to account for surcharge conditions without full transient pressure modeling).*
+1. **Filling Threshold:** Depth-to-diameter ratio $d/D \geq 0.90$. *(Note: A Preissmann slot approximation is applied for$`d/D \ge 1.0`$ to account for surcharge conditions without full transient pressure modeling).*
 2. **High-Flow Selection:** 90th percentile flow rate ($Q_{90}$) filtering to isolate representative high-convective operating periods.
 
 ###  Hydro-Thermal Correlations
