@@ -1,20 +1,12 @@
-# Seasonal Heat-Loss Results & Analysis
-This section details the thermal performance, heat-loss rates, and temperature drops along the reach for reach models RM1, RM2, and RM3. Performance was evaluated across continuous 48-hour summer and winter simulation scenarios.
-## 1. Quantitative Summary Table
-The table below summarizes the key numerical heat-loss metrics across all reach models:
-|Reach Model| Winter Heat Loss Rate (kW)| Summer Heat Loss Rate (kW)| Avg. Winter Temp Drop (°C)| Avg. Summer Temp Drop (°C)| Valid Observations (N)| 
-|---|---:|---:|---:|---:|---|
-|RM1|N/A (No model output)| N/A (No model output)| N/A (No model output)| N/A (No model output)| 0|
-|RM2| 32.27 – 36.26|86.72 – 89.59| 0.0379 – 0.0425| 0.1018 – 0.1051| 4|
-|RM3| N/A (No model output)| N/A (No model output)|N/A (No model output)| N/A (No model output)| 0|
 
-## 6. Results and Discussion
+
+## . Results and Discussion
 
 This section presents the comparative performance and seasonal heat-transfer dynamics evaluated across reach models **RM1**, **RM2**, and **RM3**. Data processing, numerical MARCHING solutions, and parametric sensitivity analyses were executed using continuous 48-hour summer and winter simulation profiles.
 
 ---
 
-### 6.1 Data Screening & Hydraulic Filtering Results
+### . Data Screening & Hydraulic Filtering Results
 
 Raw hydraulic telemetry was subjected to four sequential physical validation filters prior to thermal modeling:
 1. **Physical Depth Validation:** Removal of non-positive depth sensor records ($d \le 0$).
@@ -41,23 +33,26 @@ Raw Telemetry (48 Hours) ──► Depth Filter (d > 0) ──► Fullness (d/D 
 
 ---
 
-### 6.2 Seasonal Wastewater Temperature Drops ($\Delta T$)
+### . Seasonal Wastewater Temperature Drops ($\Delta T$)
 
 For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater temperature reduction along the $3,303\text{ m}$ reach remained minimal:
 
 <p align="center">
-  <img src="assets/rm2_summer_inlet_outlet.png" alt="RM2 Summer Inlet vs Outlet Temp" width="48%"/>
-  <img src="assets/Screenshot 2026-11-11 at 13.22.44.png" alt="RM2 Winter Inlet vs Outlet Temp" width="48%"/>
+ 
+  <img width="763" height="347" alt="winter_heat_loss" src="https://github.com/user-attachments/assets/d5603edb-be1f-4e3f-9460-29618d09b3e4" />
+  
+  <img width="758" height="344" alt="summer_heat_loss" src="https://github.com/user-attachments/assets/764fad9a-e361-4a16-9441-e12dd25da42b" />
+
   <br>
-  <em>Figure 6.1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (left) and Winter (right). Highlighted segments show qualifying high-flow observation windows.</em>
+  <em>Figure 6.1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (below) and Winter (Above). Highlighted segments show qualifying high-flow observation windows.</em>
 </p>
 
 * **Winter Conditions ($T_{\text{soil}} = 9^\circ\text{C}$):** Inlet temperature ranged between $10.90^\circ\text{C}$ and $11.30^\circ\text{C}$. The temperature drop along the reach ranged from **$0.0379^\circ\text{C}$ to $0.0425^\circ\text{C}$** (mean: $\approx 0.04^\circ\text{C}$).
 * **Summer Conditions ($T_{\text{soil}} = 13^\circ\text{C}$):** Inlet temperature ranged between $18.20^\circ\text{C}$ and $18.40^\circ\text{C}$. The temperature drop along the reach ranged from **$0.1018^\circ\text{C}$ to $0.1051^\circ\text{C}$** (mean: $\approx 0.10^\circ\text{C}$).
 
 <p align="center">
-  <img src="assets/summer_temp_drop.png" alt="Summer Temperature Drop" width="48%"/>
-  <img src="assets/winter_temp_drop.png" alt="Winter Temperature Drop" width="48%"/>
+  <img width="710" height="443" alt="Screenshot 2026-11-11 at 13 10 40" src="https://github.com/user-attachments/assets/654cd6c6-a291-4fc4-9fdd-8df98c98e021" />
+  <img width="710" height="445" alt="Screenshot 2026-11-11 at 13 10 28" src="https://github.com/user-attachments/assets/893cdff7-da59-4a6a-9b79-a11fc90afe63" />
   <br>
   <em>Figure 6.2: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
 </p>
@@ -66,7 +61,7 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
 
 ---
 
-### 6.3 Natural Heat Loss and Thermal Energy Dissipation
+### . Natural Heat Loss and Thermal Energy Dissipation
 
 Despite small localized temperature reductions, the high mass flow rate ($\dot m \approx 204\text{ kg/s}$) drives substantial thermal energy dissipation into the surrounding ground:
 
