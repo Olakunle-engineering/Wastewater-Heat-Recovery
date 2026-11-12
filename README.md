@@ -47,7 +47,7 @@ Where:
 
 ---
 
-## c. Data Screening & Internal Convection
+## C. Data Screening & Internal Convection
 
 ###  Hydraulic Pre-processing
 To ensure valid thermal modeling under full-pipe/pressurized conditions, raw hydraulic observations are screened via two primary filters:
