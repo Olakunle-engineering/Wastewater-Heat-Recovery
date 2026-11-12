@@ -115,13 +115,13 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 ### 6.2 Model Visualizations & Comparative Analysis
 
 <p align="center">
-  <img src="assets/Screenshot 2026-11-11 at 13.11.20.png" alt="Summer Heat Loss Comparison" width="700"/>
+ <img width="710" height="443" alt="Screenshot 2026-11-11 at 13 10 40" src="https://github.com/user-attachments/assets/9ec39477-4959-404d-8684-cc6ca60b8c3a" />
   <br>
   <em>Figure 6.1: Modelled summer heat-loss rate comparison across reach models (RM1, RM2, RM3).</em>
 </p>
 
 <p align="center">
-  <img src="assets/Screenshot 2026-11-11 at 13.10.28.png" alt="Winter Heat Loss Comparison" width="700"/>
+ <img width="710" height="445" alt="Screenshot 2026-11-11 at 13 10 28" src="https://github.com/user-attachments/assets/38100909-5d57-4f6a-8309-2042b297bf1f" />
   <br>
   <em>Figure 6.2: Modelled winter heat-loss rate comparison across reach models (RM1, RM2, RM3).</em>
 </p>
