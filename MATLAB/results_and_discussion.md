@@ -140,12 +140,12 @@ Spatial segment-size tests were conducted across $N \in \{25, 50, 100, 200, 500,
 
 | Number of Segments ($N$) | Spatial Element Size $\Delta x$ ($\text{m}$) | Winter $\Delta T$ ($^\circ\text{C}$) | Summer $\Delta T$ ($^\circ\text{C}$) | Relative Error vs. $N=1000$ |
 | :---: | :---: | :---: | :---: | :---: |
-| **25** | 132.12| 0.04251 | 0.10515| $< 0.05\%$ |
-| **50** | 66.06 | 0.04250 | 0.10513 | $< 0.02\%$ |
-| **100** | 33.03 | 0.04249 | 0.10512| $< 0.01\%$ |
+| **25** | 132.12| 0.04251 | 0.10515| < 0.05\% |
+| **50** | 66.06 | 0.04250 | 0.10513 | < 0.02\% |
+| **100** | 33.03 | 0.04249 | 0.10512| < 0.01\% |
 | **200 (Baseline)** | **16.52**| **0.04249** | **0.10511** | **Reference** |
-| **500** | 6.61 | 0.04249| 0.10511 | $0.00\%$ |
-| **1000** | 3.30 | 0.04249 | 0.10511 | $0.00\%$ |
+| **500** | 6.61 | 0.04249| 0.10511 | 0.00\% |
+| **1000** | 3.30 | 0.04249 | 0.10511 | 0.00\% |
 
 **Verification:** Numerical variations between $N = 200$ ($\Delta x = 16.52\text{ m}$) and $N = 1000$ ($\Delta x = 3.30\text{ m}$) were negligible ($< 0.01\%$), establishing full grid independence for the baseline 200-segment model.
 
