@@ -76,7 +76,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
 
   <img width="704" height="444" alt="Winter Heat Loss Comparison" src="https://github.com/user-attachments/assets/92368112-234c-4648-a96f-3db8cca51146" />
   <br>
-  </em>Figure 4: Modelled rate of natural heat dissipation $`\text{kW}`$ during qualifying operational hours for Summer (left) and Winter (right)].</em>
+  </em>Figure 4: Modelled rate of natural heat dissipation $(\text{kW})$ during qualifying operational hours for Summer (left) and Winter (right)].</em>
 </p>
 
 #### RM2 Seasonal Heat Loss & Dissipated Energy Summary
