@@ -29,6 +29,12 @@ Raw Telemetry (48 Hours) ──► Depth Filter (d > 0) ──► Fullness (d/D 
 | **Surcharged Points ($d/D \ge 1.0$)** | 0| 22 | 0 |
 | **Final Valid Modelled Points ($N$)** | **0**| **4** ($t = [18, 19, 42, 43]\text{ h}$) | **0** |
 
+<p align="center">
+ <img width="823" height="444" alt="Priessmann slot" src="https://github.com/user-attachments/assets/6bef70db-d023-42f6-a812-5072a9df42b2" />
+  <br>
+  <em>Figure 6.1: Depth-ratio variation across RM1, RM2, and RM3 over 48 hours, illustrating the 90% near-full threshold (d/D = 0.90) and full-pipe crown level (d/D = 1.00) under Preissmann slot surcharge interpretation.</em>
+</p>
+
 > **Discussion Note:** **RM2** was the only asset with valid, continuous high-flow pressurized telemetry satisfying all screening constraints. **RM1** and **RM3** suffered from severe sensor anomalies (negative depth readings) and failed the $90\%$ fullness threshold, yielding zero valid observations for detailed thermal evaluation.
 
 ---
@@ -121,6 +127,12 @@ The surrounding ground acts as an external thermal resistance. Modeling seven di
 | **Sandy Gravel / Frozen Clay** | 2.510 | **56.9** | **146.3** | **585.2** |
 
 **Key Finding:** Transitioning ground conditions from dry clay ($0.435\text{ W/m}\cdot\text{K}$) to sandy gravel ($2.51\text{ W/m}\cdot\text{K}$) increases natural heat loss by **$467\%$**. High soil moisture content significantly decreases external thermal resistance, resulting in accelerated thermal dissipation into surrounding ground layers.
+<p align="center">
+ <img width="938" height="452" alt="image" src="https://github.com/user-attachments/assets/85e77b4a-2f04-444e-ae64-3ba1f5e40573"  />
+ <img width="938" height="452" alt="Screenshot 2026-11-12 at 13 03 18" src="https://github.com/user-attachments/assets/6cfffec7-cd98-41f9-93e5-af061910d1bb" />
+  <br>
+  <em>Figure 6.4: RM2 sensitivity to ground properties showing linear heat-loss scaling with soil thermal conductivity (left) and cumulative seasonal energy dissipation across seven geological soil states (right).</em>
+</p>
 
 #### 2. Grid Discretization Convergence
 Spatial segment-size tests were conducted across $N \in \{25, 50, 100, 200, 500, 1000\}$ elements to verify numerical stability:
