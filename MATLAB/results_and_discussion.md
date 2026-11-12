@@ -46,7 +46,7 @@ Raw Telemetry (48 Hours) ──► Depth Filter (d > 0) ──► Fullness (d/D 
 For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater temperature reduction along the $3,303\text{ m}$ reach remained minimal:
 
 <p align="center">
-  <img src="[assets/rm2_summer_inlet_outlet.png](https://github.com/Olakunle-engineering/Wastewater-Heat-Recovery/blob/d3ad817b50b161838a202437fa8940a2cd9e4fed/assets/rm2_summer_inlet_outlet.png)" alt="RM2 Summer Inlet vs Outlet Temp" width="48%"/>
+  <img src="assets/rm2_summer_inlet_outlet.png" alt="RM2 Summer Inlet vs Outlet Temp" width="48%"/>
   <img src="assets/Screenshot 2026-11-11 at 13.22.44.png" alt="RM2 Winter Inlet vs Outlet Temp" width="48%"/>
   <br>
   <em>Figure 6.1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (left) and Winter (right). Highlighted segments show qualifying high-flow observation windows.</em>
