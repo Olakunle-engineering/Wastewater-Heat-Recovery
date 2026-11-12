@@ -76,7 +76,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
 
   <img width="704" height="444" alt="Winter Heat Loss Comparison" src="https://github.com/user-attachments/assets/92368112-234c-4648-a96f-3db8cca51146" />
   <br>
-  </em>Figure 4: Modelled rate of natural heat dissipation $(\text{kW})$ during qualifying operational hours for Summer (left) and Winter (right)].</em>
+  </em>Figure 4: Modelled rate of natural heat dissipation $(\text{kW})$ during qualifying operational hours for Summer (left) and Winter (right).</em>
 </p>
 
 #### RM2 Seasonal Heat Loss & Dissipated Energy Summary
@@ -123,6 +123,7 @@ The surrounding ground acts as an external thermal resistance. Modeling seven di
 | **Dry Sand** | 0.560 | 13.0 | 33.4 | 133.6 |
 | **Moist Sand** | 0.955 | 21.9| 56.2| 224.8 |
 | **Wet Clay / Base Case** | 1.300 / 1.500 | 29.8 / 34.3| 76.5 / 88.2 | 306.0 / 352.6|
+| **Limestone (Base Case)** | 1.500 | 34.3 | 88.2 | 352.6 |
 | **Soaked Sand** | 2.160| 49.0| 126.0| 504.0|
 | **Sandy Gravel / Frozen Clay** | 2.510 | **56.9** | **146.3** | **585.2** |
 
