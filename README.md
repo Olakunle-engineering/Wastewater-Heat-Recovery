@@ -36,10 +36,8 @@ Three rising main (RM) configurations are evaluated:
 ### 2.2 Thermal Resistance Network
 Heat transfer from the bulk fluid to the far-field soil boundary is modeled using a three-stage cylindrical thermal resistance network in series:
 [ Bulk Fluid ] ---> R_conv ---> [ Pipe Wall ] ---> R_pipe ---> [ Soil Matrix ] ---> R_soil ---> [ Ground Boundary ]
-$$\begin{aligned}
-R_{\text{total}} &= R_{\text{conv}} + R_{\text{pipe}} + R_{\text{soil}} \\[1.5ex]
-&= \frac{1}{2 \pi r_i L \, h_i} + \frac{\ln(r_o / r_i)}{2 \pi k_p L} + \frac{\ln(r_s / r_o)}{2 \pi k_s L}
-\end{aligned}$$
+
+$$R_{\text{total}} = R_{\text{conv}} + R_{\text{pipe}} + R_{\text{soil}} = \frac{1}{2 \pi r_i L \, h_i} + \frac{\ln(r_o / r_i)}{2 \pi k_p L} + \frac{\ln(r_s / r_o)}{2 \pi k_s L}$$
 
 Where:
 * $r_i, r_o$ = internal and external pipe radii ($m$).
@@ -139,13 +137,13 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 <p align="center">
   <img src="assets/Screenshot 2026-11-11 at 13.10.40.png" alt="Summer Temperature Drop" width="700"/>
   <br>
-  <em>Figure 6.3: Modelled summer temperature drop ($\Delta T$) along reach length.</em>
+  <em>Figure 6.3: Modelled summer temperature drop (ΔT) along reach length.</em>
 </p>
 
 <p align="center">
   <img src="assets/Screenshot 2026-11-11 at 13.11.10.png" alt="Winter Temperature Drop" width="700"/>
   <br>
-  <em>Figure 6.4: Modelled winter temperature drop ($\Delta T$) along reach length.</em>
+  <em>Figure 6.4: Modelled winter temperature drop (ΔT) along reach length.</em>
 </p>
 
 #### 3. Wastewater Temperature Drop ($\Delta T$)
