@@ -1,12 +1,12 @@
 
 
-## . Results and Discussion
+##  Results and Discussion
 
 This section presents the comparative performance and seasonal heat-transfer dynamics evaluated across reach models **RM1**, **RM2**, and **RM3**. Data processing, numerical MARCHING solutions, and parametric sensitivity analyses were executed using continuous 48-hour summer and winter simulation profiles.
 
 ---
 
-### . Data Screening & Hydraulic Filtering Results
+###   Data Screening & Hydraulic Filtering Results
 
 Raw hydraulic telemetry was subjected to four sequential physical validation filters prior to thermal modeling:
 1. **Physical Depth Validation:** Removal of non-positive depth sensor records ($d \le 0$).
@@ -33,7 +33,7 @@ Raw Telemetry (48 Hours) ──► Depth Filter (d > 0) ──► Fullness (d/D 
 
 ---
 
-### . Seasonal Wastewater Temperature Drops ($\Delta T$)
+###  Seasonal Wastewater Temperature Drops ($\Delta T$)
 
 For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater temperature reduction along the $3,303\text{ m}$ reach remained minimal:
 
@@ -44,7 +44,7 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
   <img width="758" height="344" alt="summer_heat_loss" src="https://github.com/user-attachments/assets/764fad9a-e361-4a16-9441-e12dd25da42b" />
 
   <br>
-  <em>Figure 6.1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (below) and Winter (Above). Highlighted segments show qualifying high-flow observation windows.</em>
+  <em>Figure 1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (below) and Winter (Above). Highlighted segments show qualifying high-flow observation windows.</em>
 </p>
 
 * **Winter Conditions ($T_{\text{soil}} = 9^\circ\text{C}$):** Inlet temperature ranged between $10.90^\circ\text{C}$ and $11.30^\circ\text{C}$. The temperature drop along the reach ranged from **$0.0379^\circ\text{C}$ to $0.0425^\circ\text{C}$** (mean: $\approx 0.04^\circ\text{C}$).
@@ -54,14 +54,14 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
   <img width="710" height="443" alt="Screenshot 2026-11-11 at 13 10 40" src="https://github.com/user-attachments/assets/654cd6c6-a291-4fc4-9fdd-8df98c98e021" />
   <img width="710" height="445" alt="Screenshot 2026-11-11 at 13 10 28" src="https://github.com/user-attachments/assets/893cdff7-da59-4a6a-9b79-a11fc90afe63" />
   <br>
-  <em>Figure 6.2: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
+  <em>Figure 2: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
 </p>
 
 **Discussion:** The larger temperature drop in summer is driven by a larger initial thermal gradient ($\Delta T_{\text{gradient}} = T_{\text{in}} - T_{\text{soil}} \approx 5.4^\circ\text{C}$ in summer vs. $\approx 2.1^\circ\text{C}$ in winter). The extremely small bulk temperature drops ($\le 0.105^\circ\text{C}$) confirm that the high thermal mass capacity rate ($\dot m c_p$) of pressurized mains cushions the fluid against rapid axial thermal degradation[cite: 12].
 
 ---
 
-### . Natural Heat Loss and Thermal Energy Dissipation
+###  Natural Heat Loss and Thermal Energy Dissipation
 
 Despite small localized temperature reductions, the high mass flow rate ($\dot m \approx 204\text{ kg/s}$) drives substantial thermal energy dissipation into the surrounding ground:
 
@@ -69,7 +69,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
   <img src="assets/Screenshot 2026-11-11 at 13.22.58.png" alt="Summer Heat Loss Comparison" width="48%"/>
   <img src="assets/winter_heat_loss.png" alt="Winter Heat Loss Comparison" width="48%"/>
   <br>
-  <em>Figure 6.3: Modelled rate of natural heat dissipation ($\text{kW}$) during qualifying operational hours for Summer (left) and Winter (right)].</em>
+  <em>Figure 3: Modelled rate of natural heat dissipation ($\text{kW}$) during qualifying operational hours for Summer (left) and Winter (right)].</em>
 </p>
 
 #### RM2 Seasonal Heat Loss & Dissipated Energy Summary
@@ -84,7 +84,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
 
 ---
 
-### 6.4 Theoretical Heat-Recovery Potential
+### Theoretical Heat-Recovery Potential
 
 To assess active heat extraction via an in-stream heat exchanger, useful thermal power ($\dot Q_{\text{useful}}$) was modeled assuming an exchanger effectiveness factor $\eta_{\text{hx}} = 70\%$ across four target temperature drop scenarios:
 
@@ -99,19 +99,13 @@ $$\dot Q_{\text{useful}} = 0.70 \times (\rho \cdot Q \cdot c_p \cdot \Delta T_{\
 | **$1.00^\circ\text{C}$** | **$596.52\text{ kW}$** | **$2,386.10\text{ kWh}$** |
 | **$2.00^\circ\text{C}$** | $1,193.00\text{ kW}$ | $4,772.10\text{ kWh}$ |
 
-Useful Power (kW) vs. Target Extraction Drop (RM2)
-1200 kW ───────────────────────────────────────────────────────────── 1193.0 kW (2.0°C)
-900 kW ───────────────────────────────────────
-600 kW ───────────────────────────── 596.5 kW (1.0°C)
-300 kW ────────────── 298.3 kW (0.5°C)
-0 kW ── 149.1 kW (0.25°C)
 
 
 **Parametric Flow Sweep:** A broader sweep across flow rates ($0.02 \le Q \le 0.25\text{ m}^3/\text{s}$) confirms a strong linear relationship between volumetric flow and extractable thermal power. Under high-flow operation ($Q = 0.204\text{ m}^3/\text{s}$), a modest $1.0^\circ\text{C}$ fluid cooling yields **$596.5\text{ kW}$** of useful thermal power.
 
 ---
 
-### 6.5 Parametric Sensitivity Analysis
+###  Parametric Sensitivity Analysis
 
 #### 1. Soil Thermal Conductivity ($k_{\text{soil}}$)
 The surrounding ground acts as an external thermal resistance. Modeling seven distinct geological matrices demonstrates the sensitivity of heat loss to ground composition:
@@ -143,7 +137,7 @@ Spatial segment-size tests were conducted across $N \in \{25, 50, 100, 200, 500,
 
 ---
 
-### 6.6 Engineering Discussion & Operational Limitations
+### Engineering Discussion & Operational Limitations
 
 
 | PRACTICAL SYSTEM DESIGN CONSTRAINTS                                              |
