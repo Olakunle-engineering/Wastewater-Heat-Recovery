@@ -60,10 +60,10 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
   <img width="710" height="443" alt="Screenshot 2026-11-11 at 13 10 40" src="https://github.com/user-attachments/assets/654cd6c6-a291-4fc4-9fdd-8df98c98e021" />
   <img width="710" height="445" alt="Screenshot 2026-11-11 at 13 10 28" src="https://github.com/user-attachments/assets/893cdff7-da59-4a6a-9b79-a11fc90afe63" />
   <br>
-  </em>Figure 3: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
+  </em>Figure 3: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right).</em>
 </p>
 
-**Discussion:** The larger temperature drop in summer is driven by a larger initial thermal gradient ($\Delta T_{\text{gradient}} = T_{\text{in}} - T_{\text{soil}} \approx 5.4^\circ\text{C}$ in summer vs. $\approx 2.1^\circ\text{C}$ in winter). The extremely small bulk temperature drops ($\le 0.105^\circ\text{C}$) confirm that the high thermal mass capacity rate ($\dot m c_p$) of pressurized mains cushions the fluid against rapid axial thermal degradation[cite: 12].
+**Discussion:** The larger temperature drop in summer is driven by a larger initial thermal gradient ($\Delta T_{\text{gradient}} = T_{\text{in}} - T_{\text{soil}} \approx 5.4^\circ\text{C}$ in summer vs. $\approx 2.1^\circ\text{C}$ in winter). The extremely small bulk temperature drops ($\le 0.105^\circ\text{C}$) confirm that the high thermal mass capacity rate ($\dot m c_p$) of pressurized mains cushions the fluid against rapid axial thermal degradation.
 
 ---
 
