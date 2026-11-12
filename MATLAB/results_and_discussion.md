@@ -32,7 +32,7 @@ Raw Telemetry (48 Hours) ──► Depth Filter (d > 0) ──► Fullness (d/D 
 <p align="center">
  <img width="823" height="444" alt="Priessmann slot" src="https://github.com/user-attachments/assets/6bef70db-d023-42f6-a812-5072a9df42b2" />
   <br>
-  <em>Figure 6.1: Depth-ratio variation across RM1, RM2, and RM3 over 48 hours, illustrating the 90% near-full threshold (d/D = 0.90) and full-pipe crown level (d/D = 1.00) under Preissmann slot surcharge interpretation.</em>
+  <em>Figure 1: Depth-ratio variation across RM1, RM2, and RM3 over 48 hours, illustrating the 90% near-full threshold (d/D = 0.90) and full-pipe crown level (d/D = 1.00) under Preissmann slot surcharge interpretation.</em>
 </p>
 
 > **Discussion Note:** **RM2** was the only asset with valid, continuous high-flow pressurized telemetry satisfying all screening constraints. **RM1** and **RM3** suffered from severe sensor anomalies (negative depth readings) and failed the $90\%$ fullness threshold, yielding zero valid observations for detailed thermal evaluation.
@@ -50,7 +50,7 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
   <img width="758" height="344" alt="summer_heat_loss" src="https://github.com/user-attachments/assets/764fad9a-e361-4a16-9441-e12dd25da42b" />
 
   <br>
-  <em>Figure 1: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (below) and Winter (Above). Highlighted segments show qualifying high-flow observation windows.</em>
+  <em>Figure 2: RM2 48-hour diurnal inlet vs. modelled outlet temperature profile for Summer (below) and Winter (Above). Highlighted segments show qualifying high-flow observation windows.</em>
 </p>
 
 * **Winter Conditions ($T_{\text{soil}} = 9^\circ\text{C}$):** Inlet temperature ranged between $10.90^\circ\text{C}$ and $11.30^\circ\text{C}$. The temperature drop along the reach ranged from **$0.0379^\circ\text{C}$ to $0.0425^\circ\text{C}$** (mean: $\approx 0.04^\circ\text{C}$).
@@ -60,7 +60,7 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
   <img width="710" height="443" alt="Screenshot 2026-11-11 at 13 10 40" src="https://github.com/user-attachments/assets/654cd6c6-a291-4fc4-9fdd-8df98c98e021" />
   <img width="710" height="445" alt="Screenshot 2026-11-11 at 13 10 28" src="https://github.com/user-attachments/assets/893cdff7-da59-4a6a-9b79-a11fc90afe63" />
   <br>
-  </em>Figure 2: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
+  </em>Figure 3: Modelled temperature drop ($\Delta T$) along reach length for Summer (left) and Winter (right)[cite: 12].</em>
 </p>
 
 **Discussion:** The larger temperature drop in summer is driven by a larger initial thermal gradient ($\Delta T_{\text{gradient}} = T_{\text{in}} - T_{\text{soil}} \approx 5.4^\circ\text{C}$ in summer vs. $\approx 2.1^\circ\text{C}$ in winter). The extremely small bulk temperature drops ($\le 0.105^\circ\text{C}$) confirm that the high thermal mass capacity rate ($\dot m c_p$) of pressurized mains cushions the fluid against rapid axial thermal degradation[cite: 12].
@@ -76,7 +76,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
 
   <img width="704" height="444" alt="Winter Heat Loss Comparison" src="https://github.com/user-attachments/assets/92368112-234c-4648-a96f-3db8cca51146" />
   <br>
-  </em>Figure 3: Modelled rate of natural heat dissipation $`\text{kW}`$ during qualifying operational hours for Summer (left) and Winter (right)].</em>
+  </em>Figure 4: Modelled rate of natural heat dissipation $`\text{kW}`$ during qualifying operational hours for Summer (left) and Winter (right)].</em>
 </p>
 
 #### RM2 Seasonal Heat Loss & Dissipated Energy Summary
@@ -131,7 +131,7 @@ The surrounding ground acts as an external thermal resistance. Modeling seven di
  <img width="938" height="452" alt="image" src="https://github.com/user-attachments/assets/85e77b4a-2f04-444e-ae64-3ba1f5e40573"  />
  <img width="938" height="452" alt="Screenshot 2026-11-12 at 13 03 18" src="https://github.com/user-attachments/assets/6cfffec7-cd98-41f9-93e5-af061910d1bb" />
   <br>
-  <em>Figure 6.4: RM2 sensitivity to ground properties showing linear heat-loss scaling with soil thermal conductivity (left) and cumulative seasonal energy dissipation across seven geological soil states (right).</em>
+  <em>Figure 5: RM2 sensitivity to ground properties showing linear heat-loss scaling with soil thermal conductivity (left) and cumulative seasonal energy dissipation across seven geological soil states (right).</em>
 </p>
 
 #### 2. Grid Discretization Convergence
