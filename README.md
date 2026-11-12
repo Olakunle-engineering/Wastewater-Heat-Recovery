@@ -7,12 +7,12 @@
 
 ---
 
-## 1. Project Background & Scope
+## A. Project Background & Scope
 
-### 1.1 Overview
+###  Overview
 Wastewater conveyed through underground rising mains represents a significant source of low-grade waste heat. Capturing this thermal energy depends on dynamic interactions between internal flow regimes, pipe geometry, wall material conductivity, and surrounding soil thermal properties.
 
-### 1.2 Objectives
+###  Objectives
 This study establishes a MATLAB-based analytical framework to:
 1. **Filter & Process Data:** Screen hydraulic and thermal telemetry from field measurements.
 2. **Model Heat Transfer:** Compute internal convective coefficients and 1D radial thermal resistance networks.
@@ -23,9 +23,9 @@ This study establishes a MATLAB-based analytical framework to:
 
 ---
 
-## 2. System Specifications & Heat Transfer Physics
+## B. System Specifications & Heat Transfer Physics
 
-### 2.1 Pipe System Parameters
+###  Pipe System Parameters
 Three rising main (RM) configurations are evaluated:
 
 | Reach Model | Length $L$ (m) | Internal Diameter $D$ (m) | Material | Thermal Conductivity $k_p$ (W/m·K) | Wall Thickness $t$ (m) |
@@ -34,7 +34,7 @@ Three rising main (RM) configurations are evaluated:
 | **RM2** | 3,303 | 0.600 | Cast Iron | 52.00 | 0.015 |
 | **RM3** | 2,927 | 0.500 | Assumed | 1.00 | 0.015 |
 
-### 2.2 Thermal Resistance Network
+###  Thermal Resistance Network
 Heat transfer from the bulk fluid to the far-field soil boundary is modeled using a three-stage cylindrical thermal resistance network in series:
 [ Bulk Fluid ] ---> R_conv ---> [ Pipe Wall ] ---> R_pipe ---> [ Soil Matrix ] ---> R_soil ---> [ Ground Boundary ]
 
@@ -47,14 +47,14 @@ Where:
 
 ---
 
-## 3. Data Screening & Internal Convection
+## c. Data Screening & Internal Convection
 
-### 3.1 Hydraulic Pre-processing
+###  Hydraulic Pre-processing
 To ensure valid thermal modeling under full-pipe/pressurized conditions, raw hydraulic observations are screened via two primary filters:
 1. **Filling Threshold:** Depth-to-diameter ratio $d/D \geq 0.90$. *(Note: A Preissmann slot approximation is applied for $d/D \ge 1.0$ to account for surcharge conditions without full transient pressure modeling).*
 2. **High-Flow Selection:** 90th percentile flow rate ($Q_{90}$) filtering to isolate representative high-convective operating periods.
 
-### 3.2 Hydro-Thermal Correlations
+###  Hydro-Thermal Correlations
 The internal convective heat transfer coefficient ($h_i$) is calculated dynamically across flow regimes:
 
 $$\begin{aligned}
@@ -65,9 +65,9 @@ $$\begin{aligned}
 
 ---
 
-## 4. Numerical Discretization & Energy Balance
+## D. Numerical Discretization & Energy Balance
 
-### 4.1 Segmental Marching Method
+###  Segmental Marching Method
 Each reach is discretized into $N$ equal segments along its axial length ($N_{\text{baseline}} = 200$). For each spatial segment $j$, steady-state energy conservation yields:
 
 $$\dot Q_j = \frac{T_{w,j} - T_{\text{ground}}}{R_{\text{total}, j}}$$
@@ -78,14 +78,14 @@ $$T_{w, j+1} = T_{w, j} - \Delta T_j$$
 
 Where $\dot m = \rho Q$ is the fluid mass flow rate and $c_p$ is the specific heat capacity of wastewater.
 
-### 4.2 Sensitivity Analysis Framework
+###  Sensitivity Analysis Framework
 * **Grid Independence:** Evaluated across $N \in \{25, 50, 100, 200, 500, 1000\}$ to verify spatial convergence.
 * **Flow Rate Sweep:** Evaluated across $0.02 \le Q \le 0.25\text{ m}^3/\text{s}$.
 * **Soil Matrix Variation:** Parametric study across 7 distinct geological profiles.
 
 ---
 
-## 5. Theoretical Energy Recovery Model
+## E. Theoretical Energy Recovery Model
 
 Recoverable thermal power ($\dot Q_{\text{useful}}$) for target fluid temperature drops ($\Delta T_{\text{target}} \in \{0.25^\circ\text{C}, 0.50^\circ\text{C}, 1.00^\circ\text{C}, 2.00^\circ\text{C}\}$) is defined as:
 
@@ -99,11 +99,11 @@ A baseline utilization factor $\eta_{\text{utilization}} = 0.70$ is applied as a
 
 ---
 
-## 6. Seasonal Heat-Loss Results & Discussion
+## F. Seasonal Heat-Loss Results & Discussion
 
 This section presents the thermal performance, heat-loss rates, and temperature drops across reach models **RM1**, **RM2**, and **RM3** over continuous 48-hour summer and winter simulation scenarios.
 
-### 6.1 Summary of Seasonal Heat-Loss Metrics
+###  Summary of Seasonal Heat-Loss Metrics
 
 | Reach Model | Winter Heat Loss Rate (kW) | Summer Heat Loss Rate (kW) | Avg. Winter Temp Drop (°C) | Avg. Summer Temp Drop (°C) | Valid Observations ($N$) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -113,7 +113,7 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 
 ---
 
-### 6.2 Model Visualizations & Comparative Analysis
+###  Model Visualizations & Comparative Analysis
 
 <p align="center">
  <img width="702" height="442" alt="Summer Heat Loss Comparison" src="https://github.com/user-attachments/assets/134d3b8c-e095-420e-9fa6-3e8692424047" />
@@ -176,7 +176,7 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 
 ---
 
-## 7. Key Modeling Assumptions & Future Scope
+## G. Key Modeling Assumptions & Future Scope
 
 
 | ASSUMPTIONS & LIMITATIONS                                                        |
@@ -198,6 +198,6 @@ This section presents the thermal performance, heat-loss rates, and temperature 
 
 ---
 
-## 8. Data Confidentiality & Reproducibility
+## H. Data Confidentiality & Reproducibility
 
 The source code ingests raw hydraulic and thermal telemetry via external spreadsheet bindings. Confidential telemetry is excluded from public source control. The analytical workflow can be reproduced by executing the core MATLAB script paired with any standard-compliant dataset matching the required schemas.
