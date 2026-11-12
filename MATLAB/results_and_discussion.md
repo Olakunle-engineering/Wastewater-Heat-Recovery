@@ -71,7 +71,7 @@ For the 4 qualifying high-flow observations on **RM2**, the dynamic wastewater t
 Despite small localized temperature reductions, the high mass flow rate ($\dot m \approx 204\text{ kg/s}$) drives substantial thermal energy dissipation into the surrounding ground:
 
 <p align="center">
-  <img src="assets/summer_heat_loss.png" alt="Summer Heat Loss Comparison" width="48%"/>
+  <img src="assets/Screenshot 2026-11-11 at 13.22.58.png" alt="Summer Heat Loss Comparison" width="48%"/>
   <img src="assets/winter_heat_loss.png" alt="Winter Heat Loss Comparison" width="48%"/>
   <br>
   <em>Figure 6.3: Modelled rate of natural heat dissipation ($\text{kW}$) during qualifying operational hours for Summer (left) and Winter (right)].</em>
