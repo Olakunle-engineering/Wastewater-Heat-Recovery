@@ -95,7 +95,7 @@ Despite small localized temperature reductions, the high mass flow rate ($\dot m
 
 To assess active heat extraction via an in-stream heat exchanger, useful thermal power ($\dot Q_{\text{useful}}$) was modeled assuming an exchanger effectiveness factor $\eta_{\text{hx}} = 70\%$ across four target temperature drop scenarios:
 
-$$\dot Q_{\text{useful}} = 0.70 \times (\rho \cdot Q \cdot c_p \cdot \Delta T_{\text{extract}})$$
+$$\dot Q_{\text{useful}} = 0.70% \times (\rho \cdot Q \cdot c_p \cdot \Delta T_{\text{extract}})$$
 
 #### Useful Thermal Power & Recovery Energy for RM2 ($Q_{\text{avg}} = 0.204\text{ m}^3/\text{s}$)
 
