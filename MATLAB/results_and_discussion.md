@@ -153,14 +153,12 @@ Spatial segment-size tests were conducted across $N \in \{25, 50, 100, 200, 500,
 
 ### Engineering Discussion & Operational Limitations
 
+**Practical System Design Constraints:**
+* **Exchanger Fouling:** Biofilm and solids deposition on heat-exchanger surfaces increase thermal resistance over time, requiring scheduled mechanical or chemical cleaning.
+* **Downstream Process Impact:** Excessive upstream heat extraction can lower influent temperatures at the wastewater treatment works (WwTW), potentially impairing temperature-sensitive biological nitrification processes.
+* **Temporal Coincidence:** Peak wastewater thermal availability must align with local district heating or industrial thermal demand profiles.
+* **Parasitic Loads:** Auxiliary pumping energy and heat-pump compressor electricity must be factored into the net Coefficient of Performance (COP).
 
-| PRACTICAL SYSTEM DESIGN CONSTRAINTS                                              |
-|:--------------------------------------------------------------------------------:|
-| 1. Exchanger Fouling: Biofilm and solids deposition increase thermal resistance.|
-| 2. Downstream Impact: Excessive heat extraction may impair biological treatment. |
-| 3. Temporal Coincidence: Heat generation must align with thermal demand.         |
-| 4. Parasitic Loads: Pumping energy and heat-pump electricity impact net COP.     |
-
-
+**Key Engineering Takeaways:**
 1. **Hydraulic Data Quality:** Telemetry screening revealed that field sensors frequently record non-positive depths or erroneous pressure heads. Robust, validated flow monitoring is essential before allocating capital to heat-recovery infrastructure.
 2. **Conveyance vs. Recovery:** High-flow rising mains experience high natural heat loss rates while maintaining high thermal retention (small $\Delta T$). This makes pressurized mains superior candidates for heat recovery relative to gravity sewers, provided downstream treatment plant thermal boundaries are respected.
